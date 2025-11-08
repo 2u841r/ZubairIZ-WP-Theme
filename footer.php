@@ -6,9 +6,7 @@
 </aside>
 <nav>
 <div class="grid grid-flow-col gap-4">
-<a class="link link-hover">About</a>
-<a class="link link-hover">Contact</a>
-<a class="link link-hover">Privacy Policy</a>
+<a class="link link-hover" href="https://github.com/2u841r/ZubairIZ-WP-Theme" target="_blank">ZubairIZ WP Theme</a>
 </div>
 </nav>
 </footer>
