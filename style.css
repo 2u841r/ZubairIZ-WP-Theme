@@ -1,0 +1,217 @@
+/*
+Theme Name: Tailwind DaisyUI Theme ZIZ
+Theme URI: https://example.com
+Author: Zubair Ibn Zamir
+Author URI: https://zubairiz.com
+Description: A modern WordPress theme with Tailwind CSS and DaisyUI theme switching
+Version: 1.0.1
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: tailwind-theme
+*/
+
+/* This file is required by WordPress but styles are handled by Tailwind */
+
+/* Compact List View Styles for Mobile */
+.list-view-item.compact-card {
+  margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .list-view-item.compact-card {
+    min-height: auto;
+    max-height: 100px;
+    margin-bottom: 0.5rem;
+    padding: 0 !important;
+  }
+  
+  .list-view-item.compact-card .card-side {
+    flex-direction: row;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  
+  .list-view-item.compact-card figure {
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+  
+  .list-view-item.compact-card figure img {
+    border-radius: 0.5rem;
+  }
+  
+  .list-view-item.compact-card .card-body {
+    padding: 0.5rem 0.75rem !important;
+    flex: 1;
+    min-width: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  
+  .list-view-item.compact-card .card-title {
+    margin-bottom: 0.25rem !important;
+    font-weight: 600;
+    line-height: 1.3;
+  }
+  
+  .list-view-item.compact-card .post-excerpt {
+    display: none !important;
+  }
+  
+  .list-view-item.compact-card .card-actions {
+    margin-top: 0.5rem !important;
+    padding: 0 !important;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+  
+  .list-view-item.compact-card .badge {
+    display: none !important;
+  }
+  
+  .list-view-item.compact-card .btn-xs {
+    font-size: 0.625rem;
+    padding: 0.125rem 0.5rem;
+    height: 1.75rem;
+    min-height: 1.75rem;
+  }
+  
+  .list-view-item.compact-card .text-sm {
+    font-size: 0.625rem;
+    margin-bottom: 0.25rem;
+  }
+}
+
+/* Line clamp utility for excerpts */
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/* DaisyUI List View Enhancements */
+.list-clickable.list-row {
+  transition: background-color 0.2s ease, opacity 0.2s ease;
+  cursor: pointer;
+  padding: 1rem !important;
+  margin-bottom: 1.5rem !important;
+  border-bottom: 1px solid hsl(var(--bc) / 0.1);
+}
+
+.list-clickable.list-row:last-child {
+  margin-bottom: 0 !important;
+  border-bottom: none;
+}
+
+.list-clickable.list-row:hover:not(.button-hovering) {
+  background-color: hsl(var(--b2));
+  opacity: 0.9;
+}
+
+.list-clickable.list-row:active:not(.button-hovering) {
+  background-color: hsl(var(--b3));
+  transform: scale(0.98);
+}
+
+/* Prevent button hover from affecting entire row */
+.list-clickable.list-row.button-hovering {
+  background-color: inherit;
+  opacity: 1;
+}
+
+.list-clickable.list-row .read-more-btn-list {
+  position: relative;
+  z-index: 10;
+  flex-shrink: 0;
+  width: auto;
+  min-width: auto;
+  max-width: fit-content;
+  margin-left: auto;
+}
+
+.list-clickable.list-row .read-more-btn-list:hover {
+  background-color: hsl(var(--p));
+  color: hsl(var(--pc));
+  transform: none;
+}
+
+/* Ensure list has proper spacing */
+.list.bg-base-100 {
+  padding: 1rem 0;
+}
+
+.list.bg-base-100 > li.list-row,
+.list.bg-base-100 > li {
+  margin-bottom: 1.5rem !important;
+  margin-top: 0 !important;
+}
+
+.list.bg-base-100 > li.list-row:last-child,
+.list.bg-base-100 > li:last-child {
+  margin-bottom: 0 !important;
+}
+
+/* Add padding to list content areas */
+.list-row > div:first-child {
+  padding-left: 0.5rem;
+}
+
+.list-row > div:nth-child(2) {
+  padding: 0 0.5rem;
+}
+
+.list-row .list-col-wrap {
+  padding: 0 0.5rem;
+}
+
+.list-row .read-more-btn-list {
+  margin-left: auto;
+  padding: 0.5rem 1rem;
+  flex-shrink: 0;
+  width: auto;
+  min-width: auto;
+  max-width: fit-content;
+}
+
+/* Make Read More button more compact on desktop */
+@media (min-width: 768px) {
+  .list-row .read-more-btn-list {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.875rem;
+    min-width: auto;
+    max-width: fit-content;
+    white-space: nowrap;
+  }
+}
+
+/* Ensure list-row doesn't stretch the button */
+.list-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.list-row .read-more-btn-list {
+  flex: 0 0 auto;
+}
+
+/* Content readability - approximately 80 characters per line */
+.prose {
+  max-width: 80ch; /* ~80 characters at standard font size */
+}
+
+.prose-lg {
+  max-width: 80ch; /* ~80 characters at larger font size */
+}
+
+/* Center content for better readability */
+main article .prose,
+main article .prose-lg {
+  margin-left: auto;
+  margin-right: auto;
+}
+
