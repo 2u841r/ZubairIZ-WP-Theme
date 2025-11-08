@@ -1,6 +1,6 @@
 # ZubairIZ WP Theme
 
-List and Grid
-DaisyUI
+- List and Grid
+- DaisyUI
 
 Demo [link](https://cms.zubairiz.com)
