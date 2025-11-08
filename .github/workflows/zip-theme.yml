@@ -1,10 +1,13 @@
-name: Zip WordPress Theme
+name: Build & Release WordPress Theme
 
 on:
   push:
     branches:
       - main
   workflow_dispatch: # allows manual run
+
+permissions:
+  contents: write
 
 jobs:
   build:
@@ -18,22 +21,22 @@ jobs:
         run: |
           zip -r theme.zip . -x "*.git*" ".github/*"
 
-      - name: Upload ZIP as artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: wordpress-theme
-          path: theme.zip
       - name: Create tag automatically
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           TAG="v$(date +'%Y%m%d-%H%M%S')"
+          echo "TAG=$TAG" >> $GITHUB_ENV
           git tag $TAG
-          git push origin $TAG
+          git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }} $TAG
 
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: ${{ github.ref_name }}
+          tag_name: ${{ env.TAG }}
           files: theme.zip
+          overwrite_files: true
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
-
+          TOKEN: ${{ secrets.TOKEN }}
