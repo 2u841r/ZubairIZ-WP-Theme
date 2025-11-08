@@ -28,5 +28,5 @@ jobs:
         with:
           files: theme.zip
         env:
-          GITHUB_TOKEN: ${{ secrets.TOKEN }}
+          TOKEN: ${{ secrets.TOKEN }}
 
